@@ -13,7 +13,7 @@ def main(page: ft.Page):
     row = ft.Row(
         controls=[
             img,
-            ft.FilledButton(text="好きな曲のプレイリスト", url="https://open.spotify.com/playlist/0Xq3Nvbh5mkcTAbv73v0nt"),
+            ft.FilledButton(text="るーずの好きな曲", url="https://open.spotify.com/playlist/0Xq3Nvbh5mkcTAbv73v0nt"),
         ],
         alignment=ft.MainAxisAlignment.CENTER,
     )
