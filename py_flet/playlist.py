@@ -47,15 +47,33 @@ def main(page: ft.Page):
     page.add(
         row,
     )
+    
+    # スクロール可能
+    list_view = ft.ListView(expand=True, spacing=10)
+    
+    # プレイリストの曲を取得
     tracks = get_playlist_tracks(playlist_id)
     
-    # 曲とアーティストの表示
-    for track in tracks:
-        track_name = track["track"]["name"]
-        artist_name = ", ".join([artist["name"] for artist in track["track"]["artists"]])
-        page.add(ft.Text(f"{track_name} - {artist_name}"))
+    # 曲 アーティスト ジャケット
+    for item in tracks:
+        track = item["track"]
+        track_name = track["name"]
+        artist_name = ", ".join([artist["name"] for artist in track["artists"]])
+        album_images = track["album"].get("images", [])
         
-    page.update()
+        # ジャケットの解像度の高い画像を選択
+        album_images_url = album_images[0]["url"]
+        
+        # 画像とテキストを表示
+        row = ft.Row(
+            [
+                ft.Image(src=album_images_url, width=100, height=100),
+                ft.Text(f"{track_name} - {artist_name}")
+            ],
+        )
+        list_view.controls.append(row)
+        
+    page.add(list_view)
 
 
 ft.app(main)
