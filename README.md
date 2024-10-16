@@ -1,3 +1,4 @@
 # FletFavoriteSongPlaylist
 
 pythonのfletというフレームワークでspotifyのプレイリストを閲覧することができるアプリを開発する
+chatgptを使いながら勉強中
